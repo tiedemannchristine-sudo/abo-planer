@@ -228,7 +228,7 @@ function zeigeErgebnis(daten) {
     const relevanteWochen = daten.quartalEmpfohlen ? daten.wochenVorratQuartal : daten.wochenVorratMonat;
     if (relevanteWochen > einstellungen.frischeWochen) {
         warnungEl.textContent = `⚠️ Die empfohlene Liefermenge reicht ca. ${relevanteWochen.toFixed(1)} Wochen. ` +
-            `Für optimale Frische empfehlen wir, Kaffee innerhalb von ${einstellungen.frischeWochen} Wochen zu verbrauchen – ` +
+            `Angebrochene Packungen sollten innerhalb von ${einstellungen.frischeWochen} Wochen verbraucht werden – ` +
             `ggf. lieber die kleinere Menge oder öfter bestellen.`;
         warnungEl.classList.remove('hidden');
     } else {
