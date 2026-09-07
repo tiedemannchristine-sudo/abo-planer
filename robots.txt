@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://abo-planer.lenoko.de/sitemap.xml

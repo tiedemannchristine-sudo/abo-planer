@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Kaffee-Abo-Planer – Finde deine passende Liefermenge | LeNoKo</title>
+    <meta name="description" content="Berechne in Sekunden deinen monatlichen Kaffeebedarf und vergleiche Monatsabo vs. Quartalslieferung inkl. Versandkosten – der kostenlose Abo-Planer von LeNoKo.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://abo-planer.lenoko.de/">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="LeNoKo">
+    <meta property="og:title" content="Kaffee-Abo-Planer – Finde deine passende Liefermenge">
+    <meta property="og:description" content="Berechne in Sekunden deinen monatlichen Kaffeebedarf und vergleiche Monatsabo vs. Quartalslieferung inkl. Versandkosten.">
+    <meta property="og:url" content="https://abo-planer.lenoko.de/">
+    <meta property="og:image" content="https://abo-planer.lenoko.de/icons/icon-512.png">
+    <meta property="og:locale" content="de_DE">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Kaffee-Abo-Planer – Finde deine passende Liefermenge">
+    <meta name="twitter:description" content="Berechne in Sekunden deinen monatlichen Kaffeebedarf und vergleiche Monatsabo vs. Quartalslieferung inkl. Versandkosten.">
+    <meta name="twitter:image" content="https://abo-planer.lenoko.de/icons/icon-512.png">
+
+    <!-- Strukturierte Daten -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "LeNoKo Kaffee-Abo-Planer",
+      "url": "https://abo-planer.lenoko.de/",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any (Web/PWA)",
+      "description": "Berechnet aus Personenanzahl, Tassen pro Tag und Zubereitungsart den monatlichen Kaffeebedarf und vergleicht Monatsabo vs. Quartalslieferung inkl. Versandkosten.",
+      "inLanguage": "de-DE",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "LeNoKo",
+        "url": "https://lenoko.de"
+      }
+    }
+    </script>
+
+    <!-- PWA -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#562600">
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
+    <link rel="icon" href="./icons/icon-192.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Kaffee-Abo-Planer">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div class="planer">
+    <div class="planer-header">
+        <h1>☕ Kaffee-Abo-Planer</h1>
+        <p>Finde die passende Liefermenge für dein Zuhause</p>
+    </div>
+
+    <div class="karte">
+        <div class="zeile">
+            <div class="feld">
+                <label for="personen">Personen im Haushalt</label>
+                <input type="number" id="personen" min="1" step="1" value="2">
+            </div>
+            <div class="feld">
+                <label for="tassen">Tassen pro Person/Tag</label>
+                <input type="number" id="tassen" min="0.5" step="0.5" value="3">
+            </div>
+        </div>
+
+        <div class="feld">
+            <label for="maschine">Zubereitungsart</label>
+            <select id="maschine">
+                <option value="filter">Filterkaffee / Handbrühmethoden</option>
+                <option value="vollautomat">Kaffeevollautomat</option>
+                <option value="siebtraeger">Siebträger / Espressomaschine</option>
+                <option value="frenchpress">French Press</option>
+                <option value="pad">Padmaschine</option>
+                <option value="coldbrew">Cold Brew</option>
+            </select>
+            <span class="hinweis">Bestimmt den geschätzten Kaffeeverbrauch pro Tasse (anpassbar unten)</span>
+        </div>
+
+        <details class="einstellungen">
+            <summary>Erweiterte Einstellungen (Preise & Verbrauchswerte)</summary>
+            <form id="einstellungen-form">
+                <div class="feld">
+                    <label>Packungspreise (€)</label>
+                </div>
+                <div class="zeile">
+                    <div class="feld">
+                        <label for="einst-preis-250">250g</label>
+                        <input type="number" id="einst-preis-250" min="0" step="0.1">
+                    </div>
+                    <div class="feld">
+                        <label for="einst-preis-500">500g</label>
+                        <input type="number" id="einst-preis-500" min="0" step="0.1">
+                    </div>
+                    <div class="feld">
+                        <label for="einst-preis-1000">1kg</label>
+                        <input type="number" id="einst-preis-1000" min="0" step="0.1">
+                    </div>
+                </div>
+                <div class="zeile">
+                    <div class="feld">
+                        <label for="einst-rabatt">Abo-Rabatt (%)</label>
+                        <input type="number" id="einst-rabatt" min="0" max="100" step="1">
+                    </div>
+                    <div class="feld">
+                        <label for="einst-frische">Frischefenster (Wochen)</label>
+                        <input type="number" id="einst-frische" min="1" step="1">
+                    </div>
+                </div>
+                <div class="zeile">
+                    <div class="feld">
+                        <label for="einst-schwelle">Gratis-Versand ab (€, nach Rabatt)</label>
+                        <input type="number" id="einst-schwelle" min="0" step="1">
+                    </div>
+                    <div class="feld">
+                        <label for="einst-versand">Versandkosten (€)</label>
+                        <input type="number" id="einst-versand" min="0" step="0.1">
+                    </div>
+                </div>
+                <div class="feld">
+                    <label>Gramm pro Tasse je Zubereitungsart</label>
+                </div>
+                <div class="zeile">
+                    <div class="feld">
+                        <label for="einst-g-filter">Filter</label>
+                        <input type="number" id="einst-g-filter" min="1" step="0.5">
+                    </div>
+                    <div class="feld">
+                        <label for="einst-g-vollautomat">Vollautomat</label>
+                        <input type="number" id="einst-g-vollautomat" min="1" step="0.5">
+                    </div>
+                </div>
+                <div class="zeile">
+                    <div class="feld">
+                        <label for="einst-g-siebtraeger">Siebträger</label>
+                        <input type="number" id="einst-g-siebtraeger" min="1" step="0.5">
+                    </div>
+                    <div class="feld">
+                        <label for="einst-g-frenchpress">French Press</label>
+                        <input type="number" id="einst-g-frenchpress" min="1" step="0.5">
+                    </div>
+                </div>
+                <div class="zeile">
+                    <div class="feld">
+                        <label for="einst-g-pad">Pad</label>
+                        <input type="number" id="einst-g-pad" min="1" step="0.5">
+                    </div>
+                    <div class="feld">
+                        <label for="einst-g-coldbrew">Cold Brew</label>
+                        <input type="number" id="einst-g-coldbrew" min="1" step="0.5">
+                    </div>
+                </div>
+            </form>
+        </details>
+
+        <button class="btn btn-berechnen" id="btn-berechnen" style="margin-top: 10px;">Bedarf berechnen</button>
+    </div>
+
+    <div class="ergebnis" id="ergebnis">
+        <div class="bedarf-box">
+            <div>Geschätzter monatlicher Bedarf</div>
+            <div class="menge" id="bedarf-menge">–</div>
+        </div>
+
+        <div class="plan-vergleich">
+            <div class="plan-karte" id="monat-karte">
+                <span class="badge hidden" id="monat-badge">Empfehlung</span>
+                <h4>📦 Monatsabo</h4>
+                <div class="zeile-info"><span>Packungen</span><strong id="monat-kombi">–</strong></div>
+                <div class="zeile-info"><span>Warenwert</span><strong id="monat-warenwert">–</strong></div>
+                <div class="zeile-info"><span>Abo-Rabatt</span><strong id="monat-rabatt">–</strong></div>
+                <div class="zeile-info"><span>Versand</span><strong id="monat-versand">–</strong></div>
+                <div class="gesamt" id="monat-gesamt"><span id="monat-gesamt-wert">–</span><small>pro Monat</small></div>
+            </div>
+
+            <div class="plan-karte" id="quartal-karte">
+                <span class="badge hidden" id="quartal-badge">Empfehlung</span>
+                <h4>📦 Quartalslieferung</h4>
+                <div class="zeile-info"><span>Packungen</span><strong id="quartal-kombi">–</strong></div>
+                <div class="zeile-info"><span>Warenwert</span><strong id="quartal-warenwert">–</strong></div>
+                <div class="zeile-info"><span>Abo-Rabatt</span><strong id="quartal-rabatt">–</strong></div>
+                <div class="zeile-info"><span>Versand</span><strong id="quartal-versand">–</strong></div>
+                <div class="gesamt" id="quartal-gesamt"><span id="quartal-gesamt-wert">–</span><small id="quartal-monatlich">pro Quartal</small></div>
+            </div>
+        </div>
+
+        <div class="warnung hidden" id="frische-warnung"></div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="https://lenoko.de/collections/kaffee" class="btn-link">Jetzt Abo einrichten</a>
+        </div>
+    </div>
+</div>
+
+<script src="./js/app.js"></script>
+</body>
+</html>

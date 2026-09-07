@@ -1,0 +1,26 @@
+{
+  "name": "LeNoKo Kaffee-Abo-Planer",
+  "short_name": "Abo-Planer",
+  "description": "Berechne deinen Kaffeebedarf und finde die passende Lieferoption.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fff7e8",
+  "theme_color": "#562600",
+  "lang": "de",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

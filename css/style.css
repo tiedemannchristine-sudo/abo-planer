@@ -1,0 +1,311 @@
+:root {
+    --color-bg: #fff7e8;
+    --color-bg-alt: #f6ead2;
+    --color-ink: #3a2415;
+    --color-brand: #562600;
+    --color-brand-hover: #3d1a00;
+    --color-brand-mid: #937551;
+    --color-accent: #cfab71;
+    --color-line: rgba(86, 38, 0, 0.16);
+
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --radius-sm: 4px;
+    --radius-md: 10px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--color-bg);
+}
+
+.planer {
+    max-width: 680px;
+    margin: 48px auto;
+    padding: 40px 28px;
+    font-family: var(--font-body);
+    color: var(--color-ink);
+}
+
+@media (max-width: 600px) {
+    .planer {
+        margin: 0 auto;
+        min-height: 100vh;
+        padding: 32px 20px;
+    }
+}
+
+.planer-header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--color-line);
+}
+
+.planer-header h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--color-brand);
+    font-size: 30px;
+    letter-spacing: -0.01em;
+    margin: 0 0 8px 0;
+}
+
+.planer-header p {
+    color: var(--color-brand-mid);
+    font-size: 15px;
+    margin: 0;
+}
+
+.karte {
+    padding-bottom: 8px;
+}
+
+.feld {
+    margin-bottom: 22px;
+}
+
+.feld label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--color-brand);
+}
+
+.feld .hinweis {
+    display: block;
+    font-weight: 400;
+    color: var(--color-brand-mid);
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+.feld input[type="number"],
+.feld select {
+    width: 100%;
+    padding: 11px 4px;
+    border: none;
+    border-bottom: 1px solid var(--color-line);
+    border-radius: 0;
+    font-family: var(--font-body);
+    font-size: 16px;
+    background: transparent;
+    color: var(--color-ink);
+}
+
+.feld input[type="number"]:focus,
+.feld select:focus {
+    outline: none;
+    border-bottom: 1px solid var(--color-brand);
+}
+
+.zeile {
+    display: flex;
+    gap: 24px;
+}
+
+.zeile .feld {
+    flex: 1;
+}
+
+.btn {
+    padding: 14px 30px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%;
+}
+
+.btn-berechnen {
+    background: var(--color-brand);
+    color: var(--color-bg);
+    border: 1px solid var(--color-brand);
+}
+
+.btn-berechnen:hover {
+    background: var(--color-brand-hover);
+}
+
+.btn-link {
+    display: inline-block;
+    background: var(--color-brand);
+    color: var(--color-bg);
+    text-decoration: none;
+    padding: 13px 26px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: 8px;
+    transition: background 0.2s;
+}
+
+.btn-link:hover {
+    background: var(--color-brand-hover);
+}
+
+details.einstellungen {
+    margin: 8px 0 28px 0;
+    border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+}
+
+details.einstellungen summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--color-brand-mid);
+    padding: 14px 0;
+    list-style: none;
+}
+
+details.einstellungen summary::-webkit-details-marker {
+    display: none;
+}
+
+details.einstellungen summary::before {
+    content: '+ ';
+}
+
+details.einstellungen[open] summary::before {
+    content: '– ';
+}
+
+details.einstellungen form {
+    padding-bottom: 8px;
+}
+
+.ergebnis {
+    display: none;
+    border-top: 1px solid var(--color-line);
+    padding-top: 32px;
+    margin-top: 8px;
+}
+
+.ergebnis.sichtbar {
+    display: block;
+}
+
+.bedarf-box {
+    text-align: center;
+    padding: 8px 0 32px 0;
+}
+
+.bedarf-box > div:first-child {
+    font-size: 14px;
+    color: var(--color-brand-mid);
+    margin-bottom: 6px;
+}
+
+.bedarf-box .menge {
+    font-family: var(--font-display);
+    font-size: 34px;
+    font-weight: 600;
+    color: var(--color-brand);
+}
+
+.plan-vergleich {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--color-line);
+}
+
+@media (max-width: 560px) {
+    .plan-vergleich {
+        grid-template-columns: 1fr;
+    }
+    .plan-karte:first-child {
+        border-bottom: 1px solid var(--color-line);
+    }
+    .plan-karte:last-child {
+        border-left: none !important;
+    }
+}
+
+.plan-karte {
+    padding: 24px 22px;
+    position: relative;
+}
+
+.plan-karte.empfohlen {
+    background: var(--color-bg-alt);
+}
+
+.plan-karte:last-child {
+    border-left: 1px solid var(--color-line);
+}
+
+.plan-karte .badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: transparent;
+    color: var(--color-brand);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border: 1px solid var(--color-accent);
+    border-radius: 12px;
+}
+
+.plan-karte h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    margin: 0 0 16px 0;
+    font-size: 19px;
+    color: var(--color-brand);
+}
+
+.plan-karte .zeile-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: var(--color-brand-mid);
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--color-line);
+}
+
+.plan-karte .zeile-info strong {
+    color: var(--color-ink);
+    font-weight: 600;
+}
+
+.plan-karte .gesamt {
+    margin-top: 14px;
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-brand);
+}
+
+.plan-karte .gesamt small {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--color-brand-mid);
+    display: block;
+    margin-top: 2px;
+}
+
+.warnung {
+    border-left: 3px solid var(--color-accent);
+    padding: 12px 16px;
+    font-size: 14px;
+    color: var(--color-ink);
+    margin-top: 24px;
+}
+
+.hidden {
+    display: none;
+}
